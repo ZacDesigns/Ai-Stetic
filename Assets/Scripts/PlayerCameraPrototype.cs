@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCameraPrototype : MonoBehaviour
 {
+    private PlayerController playerController;
     public float mouseSensitivity = 10f;
 
     public Transform player;
@@ -26,6 +27,7 @@ public class PlayerCameraPrototype : MonoBehaviour
 
     private void playerCamera()
     {
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         //Mouse look 
         x += -Input.GetAxis("Mouse Y") * mouseSensitivity;
         y += Input.GetAxis("Mouse X") * mouseSensitivity;

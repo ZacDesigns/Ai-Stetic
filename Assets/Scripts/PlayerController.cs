@@ -7,8 +7,7 @@ public class PlayerController : MonoBehaviour
     // Data import
     private Rigidbody rigBod;
 
-    public float moveSpeed = 6;
-    public float mouseSensitivity = 10f;
+    public float moveSpeed = 6; 
     public Transform player;
     private float x = 0;
     private float y = 0;
@@ -22,11 +21,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerMove();
-    }
-
-    private void playerMove()
-    {
         //inputs
         float x = Input.GetAxisRaw("Horizontal") * moveSpeed;
         float y = Input.GetAxisRaw("Vertical") * moveSpeed;
@@ -36,19 +30,21 @@ public class PlayerController : MonoBehaviour
         Vector3 newMovePos = new Vector3(movePos.x, rigBod.velocity.y, movePos.z);
 
         rigBod.velocity = newMovePos;
+        //playerMove();
     }
 
-    private void playerCamera()
+    private void playerMove()
     {
-        //Mouse look 
-        x += -Input.GetAxis("Mouse Y") * mouseSensitivity;
-        y += Input.GetAxis("Mouse X") * mouseSensitivity;
+        //inputs
+        //float x = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        //float y = Input.GetAxisRaw("Vertical") * moveSpeed;
 
-        //MathfClamp
-        x = Mathf.Clamp(x, -90, 90);
-
-        //rotations
-        transform.localRotation = Quaternion.Euler(x, 0, 0);
-        player.transform.localRotation = Quaternion.Euler(0, y, 0);
+        //movement
+       //Vector3 movePos = transform.right * x + transform.forward * y;
+        //Vector3 newMovePos = new Vector3(movePos.x, rigBod.velocity.y, movePos.z);
+        
+        //rigBod.velocity = newMovePos;
     }
+
+ 
 }

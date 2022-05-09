@@ -4,47 +4,47 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Data import
-    private Rigidbody rigBod;
+    public CharacterController controller;
 
-    public float moveSpeed = 6; 
-    public Transform player;
-    private float x = 0;
-    private float y = 0;
+    public float speed = 12f;
+    public float gravity = -9.81f;
+    public float jumpHeight = 3f;
 
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
+
+    Vector3 velocity;
+    bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
-        rigBod = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //inputs
-        float x = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        float y = Input.GetAxisRaw("Vertical") * moveSpeed;
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        //movement
-        Vector3 movePos = transform.right * x + transform.forward * y;
-        Vector3 newMovePos = new Vector3(movePos.x, rigBod.velocity.y, movePos.z);
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-        rigBod.velocity = newMovePos;
-        //playerMove();
+        Vector3 move = transform.right * x + transform.forward * z;
+
+        controller.Move(move * speed * Time.deltaTime);
+
+        if(Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+        velocity.y += gravity * Time.deltaTime;
+
+        controller.Move(velocity * Time.deltaTime);
     }
-
-    private void playerMove()
-    {
-        //inputs
-        //float x = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        //float y = Input.GetAxisRaw("Vertical") * moveSpeed;
-
-        //movement
-       //Vector3 movePos = transform.right * x + transform.forward * y;
-        //Vector3 newMovePos = new Vector3(movePos.x, rigBod.velocity.y, movePos.z);
-        
-        //rigBod.velocity = newMovePos;
-    }
-
- 
 }

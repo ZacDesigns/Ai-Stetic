@@ -15,8 +15,8 @@ namespace AISteticAI
         }
         public void HandleDetection()
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, EnemyManager.detectionRadius, detectionLayer);
-            for (int i = 0; i < colliders.Length; i++)
+            //Collider[] colliders = Physics.OverlapSphere(transform.position, EnemyManager.detectionRadius, detectionLayer);
+            //for (int i = 0; i < colliders.Length; i++)
             {
 
             }

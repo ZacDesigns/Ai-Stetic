@@ -1,27 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace AISteticAI
 {
+
+    [RequireComponent(typeof(NavMeshAgent), typeof(StateMachine))]
     public class EnemyMovementManager : MonoBehaviour
     {
-        EnemyManager enemyManager;
-        LayerMask detectionLayer;
+        NavMeshAgent _navMeshAgent;
+        StateMachine _stateMachine;
 
         private void Awake()
         {
-            enemyManager = GetComponent<EnemyManager>();
+            _navMeshAgent = this.GetComponent<NavMeshAgent>();
+            _stateMachine = this.GetComponent<StateMachine>();
         }
-        public void HandleDetection()
-        {
-            //Collider[] colliders = Physics.OverlapSphere(transform.position, EnemyManager.detectionRadius, detectionLayer);
-            //for (int i = 0; i < colliders.Length; i++)
-            {
-
-            }
-
-        }
+ 
 
         // Start is called before the first frame update
         void Start()

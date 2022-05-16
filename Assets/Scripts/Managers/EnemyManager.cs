@@ -6,7 +6,7 @@ namespace AISteticAI
 {
     public class EnemyManager : MonoBehaviour
     {
-        StateMachine _currentState; 
+        State _currentState; 
         StateIdle stateIdle = new StateIdle();
 
 

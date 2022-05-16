@@ -6,14 +6,13 @@ namespace AISteticAI
 {
     public class EnemyManager : MonoBehaviour
     {
+        StateMachine _currentState; 
+        StateIdle stateIdle = new StateIdle();
 
-        bool performingAction;
 
-        public float detectionRadius; 
-
-        void Awake()
+        void Start()
         {
-
+            _currentState = stateIdle;
         }
 
         // Update is called once per frame
@@ -22,10 +21,8 @@ namespace AISteticAI
 
         }
 
-        private void HandleCurrentAction()
-        {
 
-        }
+
 
     }
 

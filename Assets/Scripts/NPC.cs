@@ -7,24 +7,27 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NPC : MonoBehaviour
 {
-    NavMeshAgent _navMeshAgent;
-    StateMachine _stateMachine;
+    NavMeshAgent agent;
+    Animator animator;
 
-    public void Awake()
-    {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        _stateMachine = GetComponent<StateMachine>();
-    }
-    // Start is called before the first frame update
     void Start()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (agent.hasPath)
+        {
+            animator.SetFloat("Speed", agent.velocity.magnitude);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0);
+        }
     }
 
 

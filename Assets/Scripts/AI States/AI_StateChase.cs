@@ -6,10 +6,8 @@ using UnityEngine.AI;
 public class AI_StateChase : AIStates
 {
     public Transform playerTransform;
-    public float maxTime = 1.0f;
-    public float maxDistance = 1.0f;
     float timer = 0.0f;
-
+    public Animator animator;
 
     public AiStateId GetId()
     {
@@ -46,7 +44,7 @@ public class AI_StateChase : AIStates
         {
             Vector3 direction = (playerTransform.position - agent.navMeshAgent.destination);
             direction.y = 0;
-            if (direction.sqrMagnitude > maxDistance * maxDistance)
+            if (direction.sqrMagnitude > agent.config.maxDistance * agent.config.maxDistance)
             {
                 if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
                 {

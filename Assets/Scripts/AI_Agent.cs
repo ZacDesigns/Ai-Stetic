@@ -10,6 +10,7 @@ public class AI_Agent : MonoBehaviour
     public AiStateId initialState;
     public NavMeshAgent navMeshAgent;
     public Animator animator;
+    public AI_StateConfig config;
 
     // Start is called before the first frame update
     void Start()

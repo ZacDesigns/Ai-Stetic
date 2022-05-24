@@ -29,7 +29,7 @@ public class AI_StateChase : AIStates
 
     public void Update(AI_Agent agent)
     {
-        if (!agent.enabled)
+        if (!agent.navMeshAgent.enabled)
         {
             return;
         }
@@ -48,17 +48,10 @@ public class AI_StateChase : AIStates
             {
                 if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
                 {
-
+                    agent.navMeshAgent.destination = playerTransform.position;
                 }
             }
-        }
-        if (agent.navMeshAgent.hasPath)
-        {
-            animator.SetFloat("Speed", agent.navMeshAgent.velocity.magnitude);
-        }
-        else
-        {
-            animator.SetFloat("Speed", 0);
+            timer = agent.config.maxTime;
         }
     }
 }

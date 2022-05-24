@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 427a6af7fe6828b4aa51746de41648ea, type: 3}
-  m_Name: AI Config
+  m_Name: AI Config Default
   m_EditorClassIdentifier: 
   maxTime: 1
   maxDistance: 1

@@ -20,6 +20,10 @@ public class AI_StateChase : AIStates
         {
             playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         }
+        else
+        {
+            Debug.Log("player found");
+        }
     }
 
     public void Exit(AI_Agent agent)

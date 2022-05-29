@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AI Config Default
   m_EditorClassIdentifier: 
   maxTime: 1
-  maxDistance: 1
+  maxDistance: 100

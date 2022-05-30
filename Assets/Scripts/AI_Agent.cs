@@ -11,13 +11,17 @@ public class AI_Agent : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public Animator animator;
     public AI_StateConfig config;
+    public Transform playerTransform;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine = new Ai_StateMachine(this);
         stateMachine.RegisterState(new AI_StateChase());
+        stateMachine.RegisterState(new AI_StateIdle());
+        stateMachine.RegisterState(new AI_StateDeath());
         stateMachine.ChangeState(initialState);
         //gameObject.GetComponent<NavMeshAgent>().SetDestination(start.transform.position);
     }

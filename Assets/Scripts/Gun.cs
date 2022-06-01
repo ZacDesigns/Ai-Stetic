@@ -1,31 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
-    private RaycastHit hit;
-    private Ray ray;
+    private GameObject objRaycast;
 
-    public GameObject impactEffect;
+    [SerializeField] private int rayLength = 10;
+    [SerializeField] private LayerMask layerMaskInteract;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Image crosshairUI;
 
     // Update is called once per frame
     void Update()
     {
-        ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
-        if (Input.GetMouseButtonDown(0))
-        {
+        RaycastHit hit;
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, fwd, out hit, rayLength, layerMaskInteract.value))
+        {
+            if (hit.collider.CompareTag("Enemy"))
             {
-                //GameObject impactEffectGO = Instantiate(impactEffectGO, hit.point, Quaternion.identity) as GameObject;
-                //Destroy(impactEffectGO, 5);
+                objRaycast = hit.collider.gameObject;
+
             }
         }
     }

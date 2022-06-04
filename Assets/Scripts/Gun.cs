@@ -5,26 +5,34 @@ using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
-    private GameObject objRaycast;
+    public float Damage = 20f;
+    public float Range = 150f;
+    public Camera fpsCamera;
 
-    [SerializeField] private int rayLength = 10;
-    [SerializeField] private LayerMask layerMaskInteract;
 
-    [SerializeField] private Image crosshairUI;
+    void Start()
+    {
+
+    }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        RaycastHit hit;
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
-
-        if (Physics.Raycast(transform.position, fwd, out hit, rayLength, layerMaskInteract.value))
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (hit.collider.CompareTag("Enemy"))
-            {
-                objRaycast = hit.collider.gameObject;
-
-            }
+            Shoot();
         }
     }
+
+
+    public void Shoot()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit))
+        {
+            Debug.Log(hit.transform.name);
+        }
+    }
+
+
 }

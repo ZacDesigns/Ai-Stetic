@@ -30,7 +30,13 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit))
         {
+            EnemyHealthManager enemy = hit.transform.GetComponent<EnemyHealthManager>();
             Debug.Log(hit.transform.name);
+
+            if(enemy != null)
+            {
+                enemy.TakeDamage(Damage);
+            }
         }
     }
 

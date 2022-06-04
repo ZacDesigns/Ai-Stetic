@@ -31,5 +31,10 @@ public class AI_Agent : MonoBehaviour
     {
         stateMachine.Update();
 
+        if (Score.scoreVal == 50)
+        {
+            initialState = AiStateId.ChasePlayer;
+            stateMachine.ChangeState(initialState);
+        }
     }
 }

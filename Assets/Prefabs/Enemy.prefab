@@ -2402,7 +2402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   start: {fileID: 0}
-  initialState: 1
+  initialState: 0
   navMeshAgent: {fileID: 9057732291531286820}
   animator: {fileID: 2312734745487944161}
   config: {fileID: 11400000, guid: 6ea4a82d41303bd4abbc1fde422ce0ab, type: 2}

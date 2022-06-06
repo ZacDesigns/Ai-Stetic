@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,9 +13,12 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 3f;
 
     public Transform groundCheck;
+
     public bool isDead;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+
+    private Rigidbody rigBod;
 
     Vector3 velocity;
     bool isGrounded;
@@ -59,6 +63,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Enemy")
         {
             FindObjectOfType<GameManager>().GameOver();
+            Debug.Log("Enemy touvh player"); 
             isDead = true;
         }
 

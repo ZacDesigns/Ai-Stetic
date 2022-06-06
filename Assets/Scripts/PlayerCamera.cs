@@ -8,10 +8,10 @@ public class PlayerCamera : MonoBehaviour
     private PlayerController playerController;
 
     public float mouseSensitivity = 100f;
-
     public Transform playerModel;
-
     private float xRotation = 0f;
+
+
     // Start is called before the first frame update
     void Start()
     {

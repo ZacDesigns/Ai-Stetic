@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Enemy")
         {
             FindObjectOfType<GameManager>().GameOver();
-            Debug.Log("Enemy touvh player"); 
             isDead = true;
         }
 
